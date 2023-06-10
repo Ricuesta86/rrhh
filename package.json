@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "",
-    "start:dev": "nodemon ./src/index.ts"
+    "start:dev": "nodemon ./src/index.ts",
+    "start:console": "nodemon ./src/infrastructure/driving-adapter/console/console.ts"
+
   },
   "keywords": [],
   "author": "",
