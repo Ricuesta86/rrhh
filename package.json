@@ -6,8 +6,8 @@
   "scripts": {
     "start": "",
     "start:dev": "nodemon ./src/index.ts",
-    "start:console": "nodemon ./src/infrastructure/driving-adapter/console/console.ts"
-
+    "start:console": "nodemon ./src/infrastructure/driving-adapter/console/console.ts",
+    "start:excel": "nodemon ./dist/excel.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   }
 }

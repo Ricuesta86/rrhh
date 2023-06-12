@@ -1,8 +1,8 @@
-import { type User } from 'dominio/entity/User'
-import { type UserRepository } from 'dominio/repository/UserRepository'
+import { type User } from '../../../dominio/entity/User'
+import { type UserRepository } from '../../../dominio/repository/UserRepository'
 
 export class InMemoryUserRepository implements UserRepository {
-  private readonly userData: User[] = []
+  private userData: User[] = []
   async getAll (): Promise<User[]> {
     return this.userData
   }
@@ -18,14 +18,19 @@ export class InMemoryUserRepository implements UserRepository {
   }
 
   async update (user: User): Promise<User> {
+    const users = this.userData.filter(x => x.id !== user.id)
+    users.push(user)
+    this.userData = users
     return user
   }
 
   async delete (user: User): Promise<void> {
-
+    const users = this.userData.filter(x => x.id !== user.id)
+    this.userData = users
   }
 
   async getById (id: string): Promise<User | null> {
-    return null
+    const userFound = this.userData.find(x => x.id === id)
+    return userFound === undefined ? null : userFound
   }
 }

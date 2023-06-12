@@ -2,6 +2,7 @@ import { type User } from 'dominio/entity/User'
 import { type UserRepository } from '../../../dominio/repository/UserRepository'
 import { ExistUserByUserName } from '../../../dominio/service/ExistUserByUserName'
 import { UserAlreadyExistsException } from '../../../dominio/exception/UserAlreadyExistsException'
+import { UserNameUndefinedException } from '../../../dominio/exception/UserNameUndefined'
 
 export class UserCreatorUseCase {
   private readonly _userRepository: UserRepository
@@ -13,6 +14,7 @@ export class UserCreatorUseCase {
   }
 
   async run (body: User): Promise<User> {
+    if (body.username === undefined) throw new UserNameUndefinedException()
     const existUser: boolean = await this._existUserByUserName.run(body.username)
 
     if (existUser) throw new UserAlreadyExistsException()
