@@ -30,12 +30,18 @@ export class InJsonUserRepository implements UserRepository {
     const users = this.userData.filter(x => x.id !== user.id)
     users.push(user)
     this.userData = users
+    let usersJson={users:this.userData}
+    let saveJSON=JSON.stringify(usersJson)
+    fs.writeFileSync('./src/data.json', saveJSON);
     return user
   }
 
   async delete (user: User): Promise<void> {
     const users = this.userData.filter(x => x.id !== user.id)
     this.userData = users
+    let usersJson={users:this.userData}
+    let saveJSON=JSON.stringify(usersJson)
+    fs.writeFileSync('./src/data.json', saveJSON);
   }
 
   async getById (id: string): Promise<User | null> {
