@@ -4,6 +4,7 @@ import data from '../../../data.json'
 import * as fs from 'fs';
 
 export class InJsonUserRepository implements UserRepository {
+  
   private userData: User[]
 
   constructor(){
@@ -15,9 +16,7 @@ export class InJsonUserRepository implements UserRepository {
 
   async save (user: User): Promise<User> {
     this.userData.push(user)
-    let users={users:this.userData}
-    let saveJSON=JSON.stringify(users)
-    fs.writeFileSync('./src/data.json', saveJSON);
+    this.saveJSON()
     return user
   }
 
@@ -30,22 +29,24 @@ export class InJsonUserRepository implements UserRepository {
     const users = this.userData.filter(x => x.id !== user.id)
     users.push(user)
     this.userData = users
-    let usersJson={users:this.userData}
-    let saveJSON=JSON.stringify(usersJson)
-    fs.writeFileSync('./src/data.json', saveJSON);
+    this.saveJSON()
     return user
   }
 
   async delete (user: User): Promise<void> {
     const users = this.userData.filter(x => x.id !== user.id)
     this.userData = users
-    let usersJson={users:this.userData}
-    let saveJSON=JSON.stringify(usersJson)
-    fs.writeFileSync('./src/data.json', saveJSON);
+    this.saveJSON()
   }
 
   async getById (id: string): Promise<User | null> {
     const userFound = this.userData.find(x => x.id === id)
     return userFound === undefined ? null : userFound
+  }
+
+  saveJSON():void {
+    let users={users:this.userData}
+    let JsonDataString=JSON.stringify(users)
+    fs.writeFileSync('./src/data.json', JsonDataString);
   }
 }
