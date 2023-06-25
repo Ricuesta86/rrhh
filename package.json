@@ -7,6 +7,7 @@
     "start": "",
     "start:dev": "nodemon ./src/index.ts",
     "start:console": "nodemon ./src/infrastructure/driving-adapter/console/console.ts",
+    "start:api": "nodemon ./src/infrastructure/driving-adapter/api-rest/index.ts",
     "start:excel": "nodemon ./dist/excel.ts"
   },
   "keywords": [],
@@ -29,6 +30,7 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "module-alias": "^2.2.3",
     "multer": "^1.4.5-lts.1",
     "uuid": "^9.0.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"

@@ -1,4 +1,4 @@
-import { type UserRepository } from 'dominio/repository/UserRepository'
+import { type UserRepository } from '../../repository/UserRepository'
 
 export class ExistUserByUserName {
   private readonly _userRepository: UserRepository

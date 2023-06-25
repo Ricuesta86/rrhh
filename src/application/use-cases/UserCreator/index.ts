@@ -1,4 +1,4 @@
-import { type User } from 'dominio/entity/User'
+import { type User } from '../../../dominio/entity/User'
 import { type UserRepository } from '../../../dominio/repository/UserRepository'
 import { ExistUserByUserName } from '../../../dominio/service/ExistUserByUserName'
 import { UserAlreadyExistsException } from '../../../dominio/exception/UserAlreadyExistsException'
