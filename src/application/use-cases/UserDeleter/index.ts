@@ -12,8 +12,8 @@ export class UserDeleterUseCase {
     this._getUserById = new GetUserById(userRepository)
   }
 
-  async run (body: User): Promise<void> {
-    const FoundUser: User | null = await this._getUserById.run(body.id)
+  async run (id: string): Promise<void> {
+    const FoundUser: User | null = await this._getUserById.run(id)
 
     if (FoundUser === null) throw new UserNotFoundException()
 
