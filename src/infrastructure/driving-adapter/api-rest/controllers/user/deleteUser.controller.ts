@@ -4,7 +4,9 @@ import { UserDeleterUseCase } from '../../../../../application/use-cases/UserDel
 
 
 export const deleteUser = async (req:Request, res:Response, next:NextFunction):Promise <void>=>{
-    const {id}=req.params
+    const id =req.params.id
+
+    console.log(id);
     const inJsonUserRepository = new InJsonUserRepository();
     const userDeleterUseCase = new UserDeleterUseCase(inJsonUserRepository);
 
