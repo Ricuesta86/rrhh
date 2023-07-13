@@ -1,4 +1,4 @@
-import { Empleado } from "../entity/empleado";
+import { Empleado } from "../Entity/empleado";
 
 export class EmpleadoValueObject implements Empleado{
     id: string;
