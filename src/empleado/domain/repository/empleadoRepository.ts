@@ -1,4 +1,4 @@
-import { Empleado } from '../Entity/empleado';
+import { Empleado } from '../entity/empleado';
 export interface EmpleadoRepository {
   getAll: () => Promise<Empleado[]>;
   save: (empleado: Empleado) => Promise<Empleado>;

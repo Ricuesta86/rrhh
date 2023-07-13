@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { InJsonUserRepository } from '../../../../implementation/InJSON/InJsonUserRepository';
 import { UserUpdaterUseCase } from '../../../../../application/use-cases/UserUpdater/index';
-import { User } from "dominio/entity/User";
+import { User } from "../../../../../dominio/entity/User";
 
 
 

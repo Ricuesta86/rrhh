@@ -1,6 +1,6 @@
 import { type User } from '../../../dominio/entity/User'
 import { type UserRepository } from '../../../dominio/repository/UserRepository'
-import data from '../../../data.json'
+import data from '../../../../data.json'
 import * as fs from 'fs';
 
 export class InJsonUserRepository implements UserRepository {

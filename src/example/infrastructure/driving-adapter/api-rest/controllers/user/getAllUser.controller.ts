@@ -5,8 +5,8 @@
 import { UserGetterUseCase } from '../../../../../application/use-cases/UserGetter'
 import { User } from '../../../../../dominio/entity/User'
 import { Request, type NextFunction, Response } from 'express'
-import { InMemoryUserRepository } from '../../../../../infrastructure/implementation/InMemory/InMemoryUserRepository'
-import { InJsonUserRepository } from '../../../../../infrastructure/implementation/InJSON/InJsonUserRepository'
+import { InMemoryUserRepository } from '../../../../implementation/InMemory/InMemoryUserRepository'
+import { InJsonUserRepository } from '../../../../implementation/InJSON/InJsonUserRepository'
 
 // interface iCreateUser {
 //   email: string

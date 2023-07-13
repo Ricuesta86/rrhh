@@ -1,5 +1,5 @@
-import { EmpleadoRepository } from '../../Domain/Repository/empleadoRepository';
-import { Empleado } from '../../Domain/Entity/empleado';
+import { EmpleadoRepository } from '../../domain/repository/empleadoRepository';
+import { Empleado } from '../../domain/entity/empleado';
 
 export class EmpleadoGetAll {
 
