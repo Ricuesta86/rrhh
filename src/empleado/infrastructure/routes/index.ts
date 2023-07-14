@@ -1,11 +1,10 @@
 import {Router, Request, Response} from 'express';
+import { getAllEmpleadoController } from '../controllers';
 
 
 
 const router = Router();
 
-router.get('/',(req:Request,res:Response)=>{
-    res.json({msg:"Holis,  lista de empleados"})
-})
+router.get('/',getAllEmpleadoController)
 
 export {router as empleadoRouter}
