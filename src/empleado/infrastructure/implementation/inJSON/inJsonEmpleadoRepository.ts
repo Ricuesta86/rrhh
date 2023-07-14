@@ -42,10 +42,10 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   
 
   saveJSON():void {
-    let users={users:this.empleadoData}
-    let JsonDataString=JSON.stringify(users)
+    let empleados={empleados:this.empleadoData}
+    let JsonDataString=JSON.stringify(empleados)
     fs.writeFileSync(
-      "./src/Empleado/Infrastructure/implementation/InJSON/data.json",
+      "./src/empleado/infrastructure/implementation/inJSON/data.json",
       JsonDataString
     );
   }
