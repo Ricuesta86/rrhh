@@ -15,11 +15,11 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
     return null
   }
 
-  async update (empleado: Empleado):Promise<Empleado>{
+  async update (id: string, empleado: Empleado):Promise<Empleado>{
     return await empleado
   }
 
-  async delete(empleado: Empleado): Promise<void>{
+  async delete(id:string): Promise<void>{
      
   }
 
