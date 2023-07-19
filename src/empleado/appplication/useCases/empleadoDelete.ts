@@ -1,6 +1,6 @@
 import { EmpleadoRepository } from "empleado/domain/repository/empleadoRepository";
 
-export class EmpleadoDeleteUseCase{
+export class EmpleadoDelete{
     private readonly _empleadoRepository;
     constructor(empleadoRepository: EmpleadoRepository) {
         this._empleadoRepository=empleadoRepository;

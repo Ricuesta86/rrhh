@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import { InJsonEmpleadoRepository } from '../implementation/inJSON/inJsonEmpleadoRepository';
+import { EmpleadoDeleteUseCase } from "../../appplication/useCases";
 
 export const deleteEmpleado = async (
   req: Request,
@@ -10,9 +11,10 @@ export const deleteEmpleado = async (
 
 
   const inJsonEmpleadoRepository = new InJsonEmpleadoRepository();
-  // const DeleteEmpleadoUseCase = new Delet
+  const empleadoDeleteUseCase = new EmpleadoDeleteUseCase(inJsonEmpleadoRepository)
 
   try {
+    await empleadoDeleteUseCase.run(id)
     res.json({ msg: `Delete empleado ${id}` });
   } catch (error) {
     next(error);

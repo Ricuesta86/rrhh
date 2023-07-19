@@ -20,8 +20,8 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   }
 
   async delete(id:string): Promise<void>{
-     const empleados : Empleado[] | null = this.empleadoData.find(emp =>emp.id !==id )
-     this.empleadoData = [...empleados]
+     const empleados = await this.empleadoData.filter(emp =>emp.id !==id )
+     this.empleadoData = empleados
      this.saveJSON()
   }
 
