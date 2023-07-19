@@ -15,8 +15,10 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
     return null
   }
 
-  async update (id: string, empleado: Empleado):Promise<Empleado>{
-    return await empleado
+  async update (id: string, empleado: Empleado):Promise<void>{
+    const empleados = await this.empleadoData.map(emp=>emp.id === id?{...empleado,id}:emp)
+    this.empleadoData = empleados
+    this.saveJSON()
   }
 
   async delete(id:string): Promise<void>{

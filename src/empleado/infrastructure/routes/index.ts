@@ -1,5 +1,5 @@
 import {Router, Request, Response} from 'express';
-import { createEmpleadoController, deleteEmpleadoController, getAllEmpleadoController } from '../controllers';
+import { createEmpleadoController, deleteEmpleadoController, getAllEmpleadoController,updateEmpleadoController } from '../controllers';
 
 
 
@@ -8,6 +8,7 @@ const router = Router();
 router.get('/',getAllEmpleadoController)
 router.post("/", createEmpleadoController);
 router.delete("/:id", deleteEmpleadoController);
+router.put("/:id", updateEmpleadoController);
 
 
 export {router as empleadoRouter}
