@@ -11,8 +11,8 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
     this.empleadoData=data.empleados
   }
 
-  async getByCI(ci: string):Promise<Empleado | null>{
-    return null
+  async getByCI(ci: string):Promise<Empleado | undefined>{
+    return await this.empleadoData.find(emp=>emp.ci===ci)
   }
 
   async update (id: string, empleado: Empleado):Promise<void>{
@@ -28,13 +28,16 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   }
 
 
-  async getById(id: string):Promise<Empleado | null>{
-    return await null
+  async getById(id: string):Promise<Empleado | undefined>{
+    return await this.empleadoData.find(emp=>emp.id===id)
   }
 
+  async get(id: string):Promise<Empleado | undefined>{
+    return await this.empleadoData.find(emp=>emp.id===id)
+  }
 
   async getAll (): Promise<Empleado[]> {
-    return this.empleadoData
+    return await this.empleadoData
   }
 
   async save (empleado: Empleado): Promise<Empleado> {
