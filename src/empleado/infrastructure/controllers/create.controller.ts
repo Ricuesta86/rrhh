@@ -7,7 +7,7 @@ import { EmpleadoValueObject } from "../../domain/valueObject/empleadoValueObjec
 
 export const create = async (req:Request, res:Response, next:NextFunction)=>{
 
-    const {body}=req;
+    const {empleado}=req.body;
 
 
     const inJsonEmpleadoRepository=new InJsonEmpleadoRepository()
@@ -15,10 +15,10 @@ export const create = async (req:Request, res:Response, next:NextFunction)=>{
 
     const newEmpleado: Empleado = new EmpleadoValueObject(
         uuidv4(),
-        body.nombre,
-        body.apellidos,
-        body.ci,
-        body.edad
+        empleado.nombre,
+        empleado.apellidos,
+        empleado.ci,
+        empleado.edad
     );
 
     try {

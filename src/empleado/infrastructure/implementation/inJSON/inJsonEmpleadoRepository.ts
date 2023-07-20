@@ -11,8 +11,9 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
     this.empleadoData=data.empleados
   }
 
-  async getByCI(ci: string):Promise<Empleado | undefined>{
-    return await this.empleadoData.find(emp=>emp.ci===ci)
+  async getByCI(ci: string):Promise<Empleado | null>{
+    const empleadoByCI =await this.empleadoData.find(emp=>emp.ci===ci)
+    return !empleadoByCI ? null : empleadoByCI
   }
 
   async update (id: string, empleado: Empleado):Promise<void>{

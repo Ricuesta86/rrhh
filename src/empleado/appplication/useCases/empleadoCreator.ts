@@ -15,9 +15,10 @@ export class EmpleadoCreator{
 
     async run(empleado:Empleado):Promise<Empleado>{
 
-        const existEmpleado = this._existEmpleadoByCI.run(empleado.ci)
+        const existEmpleado:boolean = await this._existEmpleadoByCI.run(empleado.ci)
 
-        if(!existEmpleado) throw new EmpleadoAlreadyExist()
+        console.log(existEmpleado)
+        if(existEmpleado) throw new EmpleadoAlreadyExist()
         
         return await this._empleadoRepository.save(empleado)
     }
