@@ -1,3 +1,4 @@
 import {EmpleadoNotFound} from './empleadoNotFound'
+import {EmpleadoAlreadyExist} from './empleadoAlreadyExist'
 
-export {EmpleadoNotFound}
+export {EmpleadoNotFound,EmpleadoAlreadyExist}
