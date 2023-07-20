@@ -1,6 +1,6 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import { createEmpleadoController, deleteEmpleadoController, getAllEmpleadoController,updateEmpleadoController,getEmpleadoController } from '../controllers';
-import { EmpleadoAlreadyExist, EmpleadoNotFound } from '../../domain/exception';
+import { EmpleadoAlreadyExist, EmpleadoNotFound, EmpleadoNotFoundById } from '../../domain/exception';
 
 
 
@@ -18,11 +18,16 @@ router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         message: 'El empleado ya ha sido creado'
       })
     } else if (err instanceof EmpleadoNotFound) {
-      res.status(400).json({
-        message: 'El empleado no existe'
-      })
+        res.status(404).json({
+          message: 'El empleado no existe'
+        })
+    } else if (err instanceof EmpleadoNotFoundById) {
+        const {id} =req.params
+        res.status(404).json({
+            message: `El empleado con el id: ${id} no existe`
+        })
     } else {
-      next(err)
+        next(err)
     }
 })
 

@@ -23,7 +23,8 @@ export const create = async (req:Request, res:Response, next:NextFunction)=>{
 
     try {
         const createdEmpleado = await empleadoCreatorUseCase.run(newEmpleado)
-        res.json(createdEmpleado)
+        res.status(201).json({msg:'El empleado fue creado correctamente',data: createdEmpleado
+        })
     } catch (error) {
         next(error)
     }

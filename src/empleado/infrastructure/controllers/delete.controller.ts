@@ -15,7 +15,7 @@ export const deleteEmpleado = async (
 
   try {
     await empleadoDeleteUseCase.run(id)
-    res.json({ msg: `Delete empleado ${id}` });
+    res.status(200).json({ msg: `El empleado fue eliminado correctamente` });
   } catch (error) {
     next(error);
   }

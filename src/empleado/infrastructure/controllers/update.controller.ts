@@ -16,7 +16,7 @@ export const updateEmpleado = async (
 
   try {
     await empleadoUpdateUseCase.run(id,empleado)
-    res.json({ msg: `Update empleado ${id}` });
+    res.status(200).json({msg:'El empleado fue actualizado correctamente'})
   } catch (error) {
     next(error);
   }

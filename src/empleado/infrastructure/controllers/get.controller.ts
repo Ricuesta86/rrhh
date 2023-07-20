@@ -11,7 +11,7 @@ export const get= async (req:Request,res:Response,next:NextFunction)=>{
 
     try {
         const getEmpleado = await empleadoGetterUseCase.run(id)
-        res.json(getEmpleado)
+        res.status(200).json({msg:'SUCCESS', data:getEmpleado})
     } catch (error) {
         next(error)
     }

@@ -10,8 +10,8 @@ export const getAll = async (req: Request, res: Response, next:NextFunction) => 
     );
 
     try {        
-    const data:Empleado[] = await empleadoGetAllUseCase.run()
-    res.json(data);
+      const data:Empleado[] = await empleadoGetAllUseCase.run()
+      res.status(200).json({msg:'SUCCESS', data})
     } catch (error) {
         next(error)
     }
