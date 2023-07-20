@@ -29,12 +29,14 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   }
 
 
-  async getById(id: string):Promise<Empleado | undefined>{
-    return await this.empleadoData.find(emp=>emp.id===id)
+  async getById(id: string):Promise<Empleado | null>{
+    const empleadoById =await this.empleadoData.find(emp=>emp.id===id)
+    return !empleadoById ? null : empleadoById
   }
 
-  async get(id: string):Promise<Empleado | undefined>{
-    return await this.empleadoData.find(emp=>emp.id===id)
+  async get(id: string):Promise<Empleado | null>{
+    const empleadoById =await this.empleadoData.find(emp=>emp.id===id)
+    return !empleadoById ? null : empleadoById
   }
 
   async getAll (): Promise<Empleado[]> {
