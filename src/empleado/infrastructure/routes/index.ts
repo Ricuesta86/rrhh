@@ -15,16 +15,15 @@ router.put("/:id", updateEmpleadoController);
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof EmpleadoAlreadyExist) {
       res.status(400).json({
-        message: 'El empleado ya ha sido creado'
+        msg: 'El empleado ya ha sido creado'
       })
     } else if (err instanceof EmpleadoNotFound) {
         res.status(404).json({
-          message: 'El empleado no existe'
+          msg: 'El empleado no existe'
         })
-    } else if (err instanceof EmpleadoNotFoundById) {
-        const {id} =req.params
+    } else if (err instanceof EmpleadoNotFoundById) {        
         res.status(404).json({
-            message: `El empleado con el id: ${id} no existe`
+            msg: err.message
         })
     } else {
         next(err)

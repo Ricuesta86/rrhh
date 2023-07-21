@@ -6,7 +6,7 @@ import { empleadoRouter } from './empleado/infrastructure/routes'
 dotEnvConfig()
 
 function boostrap (): void {
-  const PORT = 3000
+  const PORT = process.env.PORT || 3000
 
   const app = express()
 

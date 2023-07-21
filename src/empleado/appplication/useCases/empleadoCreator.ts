@@ -17,7 +17,6 @@ export class EmpleadoCreator{
 
         const existEmpleado:boolean = await this._existEmpleadoByCI.run(empleado.ci)
 
-        console.log(existEmpleado)
         if(existEmpleado) throw new EmpleadoAlreadyExist()
         
         return await this._empleadoRepository.save(empleado)

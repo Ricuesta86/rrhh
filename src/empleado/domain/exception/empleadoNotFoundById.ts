@@ -1,5 +1,5 @@
 export class EmpleadoNotFoundById extends Error{
     constructor(msg: string) {
-        super(`Empleado not found by id: ${msg}`)
+        super(`El empleado con el id: ${msg} no existe`)
     }
 }
