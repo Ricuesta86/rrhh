@@ -13,7 +13,6 @@ export class EmpleadoUpdate{
     async run(id:string, empleado:Empleado):Promise<void>{
 
         const empleadoById:boolean = await this._existEmpleadoById.run(id)
-        console.log(empleadoById)
         if(!empleadoById) throw new EmpleadoNotFoundById(id)
 
         return await this.empleadoRepository.update(id,empleado)
