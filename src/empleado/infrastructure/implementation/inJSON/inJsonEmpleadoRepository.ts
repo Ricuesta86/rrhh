@@ -1,13 +1,15 @@
 import { Empleado } from '../../../domain/entity/empleado';
 import { EmpleadoRepository } from "../../../domain/repository/empleadoRepository";
-import data from './data.json'
 import * as fs from 'fs';
 
 export class InJsonEmpleadoRepository implements EmpleadoRepository {
   
   private empleadoData: Empleado[]
-
+  private url_dir: string
+  
   constructor(){
+    this.url_dir = process.env.URL_DIR || '/home/ricuesta/Dev/repo-rhu/backend/src/empleado/infrastructure/implementation/inJSON/data.json'
+    const data =require(this.url_dir)
     this.empleadoData=data.empleados
   }
 
@@ -52,11 +54,10 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   
 
   saveJSON():void {
-    const url_dir="./src/empleado/infrastructure/implementation/inJSON/data.json"
     let empleados={empleados:this.empleadoData}
     let JsonDataString=JSON.stringify(empleados)
     fs.writeFileSync(
-      url_dir,
+      this.url_dir,
       JsonDataString
     );
   }
