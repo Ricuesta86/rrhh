@@ -9,6 +9,10 @@ export class AuthLogin{
     }
 
     async run(authUse:Auth):Promise<Auth>{
-        return this._authRepository.login(authUse)
+        const isCheck = await this._authRepository.login(authUse)
+        
+        if(!isCheck) throw new Error()
+
+        return isCheck
     }
 }

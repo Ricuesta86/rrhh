@@ -5,7 +5,7 @@ import { registerAuthController } from '../controllers';
 
 const router = Router();
 
-router.post("/", registerAuthController);
+router.post("/register", registerAuthController);
 router.post("/", registerAuthController);
 
 router.use((err: Error, req: Request, res: Response, next: NextFunction) => {

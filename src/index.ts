@@ -2,6 +2,7 @@ import { config as dotEnvConfig } from 'dotenv'
 import express, { type Request, type Response } from 'express'
 import cors from 'cors'
 import { empleadoRouter } from './empleado/infrastructure/routes'
+import { authRouter } from './auth/infrastructure/routes'
 
 dotEnvConfig()
 
@@ -19,6 +20,7 @@ function boostrap (): void {
   // })
 
   app.use('/empleado',empleadoRouter)
+  app.use('/auth',authRouter)
 
   app.listen(PORT, () => {
     console.log(`[App] corriendo por el puerto ${PORT}`)
