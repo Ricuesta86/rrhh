@@ -1,12 +1,13 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import { createEmpleadoController, deleteEmpleadoController, getAllEmpleadoController,updateEmpleadoController,getEmpleadoController } from '../controllers';
 import { EmpleadoAlreadyExist, EmpleadoNotFound, EmpleadoNotFoundById } from '../../domain/exception';
+import { logMiddleware } from '../middleware/log.middleware';
 
 
 
 const router = Router();
 
-router.get('/',getAllEmpleadoController)
+router.get('/', logMiddleware, getAllEmpleadoController)
 router.get("/:id", getEmpleadoController);
 router.post("/", createEmpleadoController);
 router.delete("/:id", deleteEmpleadoController);
