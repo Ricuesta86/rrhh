@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { Auth } from '../../domain/entity/auth';
 import { InJsonAdapterAuthRepository } from "../implementation/inJSON/inJsonAdapterAuthRepository";
 import { AuthLoginUseCase } from "../../application/useCase";
-import { AuthValueObject } from "../../domain/valueObject/authValueObject";
 import { BcryptAdapterEncrypt } from '../implementation/bcrypt/bcryptAdapterEncrypt';
+import { JWTAdapterToken } from '../implementation/jwt/jwtAdapterToken';
 
 export const login = async (req:Request, res:Response, next:NextFunction)=>{
 
@@ -13,6 +12,7 @@ export const login = async (req:Request, res:Response, next:NextFunction)=>{
     const inJsonAdapterAuthRepository=new InJsonAdapterAuthRepository()
     const authLoginUseCase= new  AuthLoginUseCase(inJsonAdapterAuthRepository);
     const bcryptAdapterEncrypt = new BcryptAdapterEncrypt()
+    const jwtAdapterToken = new JWTAdapterToken()
     
 
 
@@ -21,13 +21,16 @@ export const login = async (req:Request, res:Response, next:NextFunction)=>{
         const authLogin = await authLoginUseCase.run(auth)
         const passHash =authLogin.password
         const isCorrect = await bcryptAdapterEncrypt.verified(auth.password,passHash)
-        if(isCorrect)
-        res.status(201).json({msg:'El user fue logeado correctamente',data: auth
-        })
+        if(isCorrect){
+            const token = jwtAdapterToken.generate(auth.email)
+            res.status(200).json({
+                msg:'El user fue logeado correctamente',data: {auth,token}
+            })
+        }
         else
-        res.status(400).json({
-            msg:'Contraceña incorrecta'
-        })
+            res.status(403).json({
+                msg:'Contraceña incorrecta'
+            })
     } catch (error) {
         next(error)
     }
