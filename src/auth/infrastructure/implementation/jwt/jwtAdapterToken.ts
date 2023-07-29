@@ -1,5 +1,5 @@
 import { iToken } from "auth/domain/entity/iToken";
-import {sign,verify} from 'jsonwebtoken'
+import {JwtPayload, sign,verify} from 'jsonwebtoken'
 
 export class JWTAdapterToken implements iToken{
 
@@ -17,8 +17,8 @@ export class JWTAdapterToken implements iToken{
     }
 
 
-    verified (jwt:string):boolean{
+    verified (jwt:string):string | JwtPayload{
         const isCorrect = verify(jwt,this.secret)
-        return isCorrect ? true : false
+        return isCorrect 
     }
 }
