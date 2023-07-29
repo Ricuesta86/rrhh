@@ -1,5 +1,8 @@
 import { register } from './register';
+import { login } from './login';
 
 export {
-    register as registerAuthController
+    register as registerAuthController,
+    login as loginAuthController,
+
 }
