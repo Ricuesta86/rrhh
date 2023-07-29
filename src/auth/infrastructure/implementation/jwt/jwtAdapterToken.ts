@@ -17,7 +17,8 @@ export class JWTAdapterToken implements iToken{
     }
 
 
-    verified (): boolean{
-        return true
+    verified (jwt:string):boolean{
+        const isCorrect = verify(jwt,this.secret)
+        return isCorrect ? true : false
     }
 }
