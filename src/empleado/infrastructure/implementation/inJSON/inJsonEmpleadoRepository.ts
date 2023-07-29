@@ -6,10 +6,12 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   
   private empleadoData: Empleado[]
   private url_dir: string
+  private dataJSON:object
   
   constructor(){
     this.url_dir = process.env.URL_DIR || '/home/ricuesta/Dev/repo-rhu/backend/src/empleado/infrastructure/implementation/inJSON/data.json'
     const data =require(this.url_dir)
+    this.dataJSON = data
     this.empleadoData=data.empleados
   }
 
@@ -54,7 +56,7 @@ export class InJsonEmpleadoRepository implements EmpleadoRepository {
   
 
   saveJSON():void {
-    let empleados={empleados:this.empleadoData}
+    let empleados={empleados:this.empleadoData,...this.dataJSON}
     let JsonDataString=JSON.stringify(empleados)
     fs.writeFileSync(
       this.url_dir,

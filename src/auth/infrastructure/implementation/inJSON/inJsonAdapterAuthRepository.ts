@@ -6,10 +6,12 @@ export class InJsonAdapterAuthRepository implements AuthRepository{
 
     private usersData:Auth[]
     private url_dir:string
+    private dataJSON:object
 
     constructor(){
         this.url_dir = process.env.URL_DIR || '/home/ricuesta/Dev/repo-rhu/backend/src/empleado/infrastructure/implementation/inJSON/data.json'
         const data =require(this.url_dir)
+        this.dataJSON = data
         this.usersData=data.users
     }
 
@@ -25,12 +27,13 @@ export class InJsonAdapterAuthRepository implements AuthRepository{
     };
 
     saveJSON():void {
-        let users={users:this.usersData}
+        let users={users:this.usersData,...this.dataJSON}
         let JsonDataString=JSON.stringify(users)
         fs.writeFileSync(
           this.url_dir,
           JsonDataString
         );
+        // console.log(this.usersData)
       }
 
 }
