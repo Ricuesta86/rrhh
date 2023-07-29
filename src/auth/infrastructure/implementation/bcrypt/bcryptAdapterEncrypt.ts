@@ -9,8 +9,9 @@ export class BcryptAdapterEncrypt implements IEncrypt{
     };
 
 
-    async verified ():Promise<any>{
-
+    async verified (pass:string,passHash:string):Promise<boolean>{
+        const isCorrect = compare(pass,passHash)
+        return isCorrect
     }
     
 }
